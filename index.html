@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ben House | The Crispiest Chicken in Town</title>
+    <style>
+        /* Typography & Color Variables */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap');
+
+        :root {
+            --primary-color: #ff4757; /* Appetizing Crimson Red */
+            --secondary-color: #ffa502; /* Crispy Golden Orange */
+            --dark-color: #2f3542;
+            --light-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f1f2f6;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar */
+        header {
+            background-color: var(--light-color);
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-right: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=2070') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--light-color);
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        /* Typing Animation for the main headline */
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid var(--secondary-color);
+            animation: typing 3.5s steps(30, end), blink-caret .75s step-end infinite;
+            max-width: fit-content;
+        }
+
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in forwards;
+            animation-delay: 3.5s;
+        }
+
+        /* Call To Action Button with Pulse Effect */
+        .btn {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+            animation: pulse 2s infinite;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .menu-section h2 {
+            font-size: 38px;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .menu-section h2::after {
+            content: '';
+            width: 50%;
+            height: 4px;
+            background-color: var(--secondary-color);
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+            border-radius: 2px;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        /* Interactive Menu Cards */
+        .menu-card {
+            background-color: var(--light-color);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .menu-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .menu-info {
+            padding: 25px;
+            text-align: left;
+        }
+
+        .menu-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .menu-info p {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* Keyframes Animations */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--secondary-color); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 5px 25px rgba(255, 71, 87, 0.7);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+            }
+        }
+
+        /* Responsive Mobile Layout */
+        @media (max-width: 768px) {
+            header { padding: 15px 5%; }
+            .hero h1 { font-size: 32px; white-space: normal; border: none; animation: fadeIn 1s ease-in forwards; }
+            .hero p { font-size: 18px; opacity: 1; animation: none; }
+            nav { display: none; } 
+            .menu-info { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo">Ben <span>House</span></div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <!-- Linked Menu to the order page as well -->
+                <li><a href="order.html">Menu</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to Ben House</h1>
+        <p>The Craziest Crunch & Best Fried Chicken in Town!</p>
+        <!-- FIXED LINE: Navigates straight to order.html -->
+        <a href="order.html" class="btn">Order Now</a>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section">
+        <h2>Our Best Sellers</h2>
+        <div class="menu-container">
+            
+            <!-- Card 1 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=2070" alt="Crispy Chicken">
+                <div class="menu-info">
+                    <h3>Ben House Crunchy Combo</h3>
+                    <p>Golden broasted chicken pieces served with crispy fries, garlic dip, and fresh buns.</p>
+                    <div class="price">$12.99</div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1525059696034-4967a8e1dca2?q=80&w=1976" alt="Chicken Burger">
+                <div class="menu-info">
+                    <h3>Grand Chicken Burger</h3>
+                    <p>Monster crispy chicken breast topped with melted cheddar cheese and our secret Ben House sauce.</p>
+                    <div class="price">$8.49</div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?q=80&w=1980" alt="Chicken Tenders">
+                <div class="menu-info">
+                    <h3>Spicy Chicken Tenders</h3>
+                    <p>5 pieces of fiery, hand-breaded chicken breast strips served with sweet honey mustard.</p>
+                    <div class="price">$6.99</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
